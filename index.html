@@ -219,7 +219,6 @@ h2.sec{font-family:var(--hand);font-weight:700;font-size:28px;margin:0;line-heig
 
 /* ---------- finale ---------- */
 .finale{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px 20px 20px;box-shadow:var(--shadow);display:grid;gap:18px;position:relative;overflow:hidden;scroll-margin-top:60px}
-.fin-title{font-family:var(--hand);font-weight:700;font-size:clamp(48px,14vw,76px);line-height:1.05;margin:0;background:linear-gradient(100deg,var(--you) 0%,var(--me) 60%,var(--gold) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .fin-sub{font-family:var(--hand);font-size:18px;line-height:1.75;margin:0;color:var(--ink)}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .stat{background:var(--surface-2);border-radius:16px;padding:12px 14px;display:grid;gap:2px;align-content:start}
@@ -242,6 +241,44 @@ footer{margin-top:34px;font-size:13px;color:var(--ink-3);display:grid;gap:6px;ju
 .nb-sub{font-family:var(--hand);font-size:14px;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nb-text{min-width:0}
 .nb-btn{border:0;background:var(--me);color:var(--on-me);border-radius:12px;padding:9px 14px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+
+/* ---------- back home: what shows when ---------- */
+body:not(.is-back) .back-only{display:none!important}
+body.is-back .away-only{display:none!important}
+body.is-back{padding-bottom:48px}
+body.is-back:not(.trip-open) #trip{display:none}
+.is-back .hero{min-height:380px}
+.is-back .hero h1{font-size:clamp(44px,13vw,84px);line-height:1.05;letter-spacing:.02em}
+.is-back .count .v small:last-child{margin-right:0}
+#hfish2,#hheart{cursor:pointer}
+#hfish2 .hbob{animation-delay:-2.2s}
+#hheart{animation:beat 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes beat{0%,100%{transform:scale(1)}12%{transform:scale(1.25)}24%{transform:scale(1)}}
+
+.letters{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px 18px 16px;box-shadow:var(--shadow)}
+.letters h2{font-family:var(--hand);font-weight:700;font-size:24px;margin:0;line-height:1.3}
+.letters .hint{font-size:13px;color:var(--ink-3);margin:2px 0 12px}
+.envs{display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));gap:4px}
+.nt{appearance:none;border:0;background:transparent;padding:8px 0 5px;border-radius:12px;display:grid;justify-items:center;gap:2px;cursor:pointer;position:relative}
+.nt .dt{font-size:12px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.nt .env{fill:var(--surface);stroke:var(--ink-3);stroke-width:1.5}
+.nt .flap{fill:none;stroke:var(--ink-3);stroke-width:1.5;stroke-linejoin:round}
+.nt .seal{fill:var(--heart)}
+.nt.opened .seal{opacity:0}
+.nt.opened .env{fill:var(--me-soft);stroke:var(--me)}
+.nt.opened .flap{stroke:var(--me)}
+.nt.fresh::after{content:"";position:absolute;top:5px;right:calc(50% - 22px);width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 2px var(--surface)}
+.nt[aria-pressed="true"]{background:var(--me-soft)}
+.nt[aria-pressed="true"] .dt{color:var(--me);font-weight:650}
+.nt[aria-pressed="true"] .env{fill:var(--surface)}
+.letters .note{margin:12px 0 2px}
+.note .when{display:block;font-family:var(--body);font-size:12px;color:var(--ink-3);margin-bottom:4px}
+
+.trip-btn{appearance:none;width:100%;margin-top:14px;background:transparent;border:1.5px dashed var(--line);border-radius:18px;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer;text-align:left}
+.trip-btn b{display:block;font-family:var(--hand);font-size:19px;font-weight:700;line-height:1.3}
+.trip-btn span span{display:block;font-size:12.5px;color:var(--ink-3)}
+.trip-btn svg{flex:none;stroke:var(--ink-3);transition:transform .25s}
+.trip-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
 
 /* ---------- floating things & taps ---------- */
 .floaters{position:fixed;inset:0;pointer-events:none;z-index:8;overflow:hidden}
@@ -300,6 +337,7 @@ footer{margin-top:34px;font-size:13px;color:var(--ink-3);display:grid;gap:6px;ju
   .pop.long{animation-duration:5s}
   .spark{display:none}
   .note{animation:none}
+  #hheart{animation:none}
 }
 @keyframes popFade{0%{opacity:0}10%{opacity:1}80%{opacity:1}100%{opacity:0}}
 </style>
@@ -338,6 +376,22 @@ footer{margin-top:34px;font-size:13px;color:var(--ink-3);display:grid;gap:6px;ju
           <circle cx="44" cy="-24" r="2" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1"/>
         </g>
       </g>
+      <g id="sea" style="display:none">
+        <path id="wave1" d="M0 232 Q50 222 100 232 T200 232 T300 232 T400 232 T500 232 T600 232 T700 232 T800 232 V300 H0Z"/>
+        <path id="wave2" d="M-50 252 Q0 243 50 252 T150 252 T250 252 T350 252 T450 252 T550 252 T650 252 T750 252 T850 252 V300 H-50Z"/>
+        <path id="wave3" d="M0 274 Q50 267 100 274 T200 274 T300 274 T400 274 T500 274 T600 274 T700 274 T800 274 V300 H0Z"/>
+      </g>
+      <g id="hfish2" transform="translate(458,120) scale(-1,1)" style="display:none">
+        <g class="hbob">
+          <path d="M-22 0 Q-30 -12 -36 -13 L-30 0 L-36 13 Q-30 12 -22 0Z" fill="#f7b3c0"/>
+          <ellipse cx="0" cy="0" rx="22" ry="14" fill="#f7b3c0"/>
+          <path d="M-6 -13 Q2 -22 10 -12" fill="#ec94a6"/>
+          <circle cx="11" cy="-3" r="2.6" fill="#22304a"/>
+          <circle cx="12" cy="-4" r="1" fill="#fff"/>
+          <ellipse cx="7" cy="6" rx="3.6" ry="2.4" fill="#e4607a" opacity=".6"/>
+        </g>
+      </g>
+      <path id="hheart" style="display:none" fill="#ff8fa3" d="M416 104c-5.6-4-8.6-6.8-8.6-10a4.4 4.4 0 0 1 8.6-1.6 4.4 4.4 0 0 1 8.6 1.6c0 3.2-3 6-8.6 10Z"/>
       <polygon id="mesaFar" fill="#a2553f" opacity=".8" points="0,222 58,222 72,192 148,192 162,216 262,216 282,168 336,168 350,206 470,206 488,182 562,182 578,210 680,210 698,184 764,184 778,214 800,214 800,300 0,300"/>
       <polygon id="mesaNear" fill="#6b2f28" points="0,246 96,246 116,208 178,208 192,238 334,238 348,224 398,224 412,244 516,244 538,196 606,196 626,240 800,240 800,300 0,300"/>
       <polygon id="ground" fill="#2a1a1c" points="0,272 800,264 800,300 0,300"/>
@@ -354,7 +408,7 @@ footer{margin-top:34px;font-size:13px;color:var(--ink-3);display:grid;gap:6px;ju
     </svg>
     <div>
       <h1 id="title">woo 在亞利桑那</h1>
-      <p class="hero-sub">9/29 – 10/10 · ICNP 2026</p>
+      <p class="hero-sub" id="hSub">9/29 – 10/10 · ICNP 2026</p>
     </div>
     <div class="count">
       <span class="k" id="cK">woo 回到魚身邊，還有</span>
@@ -364,8 +418,7 @@ footer{margin-top:34px;font-size:13px;color:var(--ink-3);display:grid;gap:6px;ju
     </div>
   </header>
 
-  <section class="finale" id="finale" hidden>
-    <p class="fin-title">woo 回來了。</p>
+  <section class="finale back-only" id="finale">
     <p class="fin-sub">十二天、四段航班、兩萬多公里。<br>走了好大一圈，最後還是回到魚這裡。</p>
     <div class="stats">
       <div class="stat"><span class="num">12<small>天</small></span><span class="lab">9/29 – 10/10</span></div>
@@ -377,7 +430,19 @@ footer{margin-top:34px;font-size:13px;color:var(--ink-3);display:grid;gap:6px;ju
     </div>
   </section>
 
-  <div class="pair" id="now">
+  <section class="letters back-only" id="letters">
+    <h2>一路上留給魚的小紙條</h2>
+    <p class="hint" id="lettersHint"></p>
+    <div class="envs" id="envs"></div>
+    <div class="note" id="letterView" hidden></div>
+  </section>
+
+  <button class="trip-btn back-only" type="button" id="tripBtn" aria-expanded="false" aria-controls="trip">
+    <span><b>翻看這一趟</b><span>每一天、航班、住過的酒店</span></span>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+
+  <div class="pair away-only" id="now">
     <button class="clk you" type="button" id="clkYou">
       <span class="who">魚 · 香港</span>
       <span class="t" id="tYou">--:--</span>
@@ -393,7 +458,7 @@ footer{margin-top:34px;font-size:13px;color:var(--ink-3);display:grid;gap:6px;ju
     </button>
   </div>
 
-  <div class="overlap" id="tz">
+  <div class="overlap away-only" id="tz">
     <h2>什麼時候找 woo 最好</h2>
     <div class="bands" id="bands"></div>
     <ul class="win">
@@ -403,7 +468,8 @@ footer{margin-top:34px;font-size:13px;color:var(--ink-3);display:grid;gap:6px;ju
     <p class="small">按兩個人都早上 7 點起、晚上 11 點睡粗略算。這段時間 woo 比魚慢 15 小時。</p>
   </div>
 
-  <nav class="jump" aria-label="跳轉">
+  <div id="trip">
+  <nav class="jump away-only" aria-label="跳轉">
     <a href="#" class="primary" id="jumpNow">woo 在哪</a>
     <a href="#plan">每一天</a>
     <a href="#flights">航班</a>
@@ -419,7 +485,7 @@ footer{margin-top:34px;font-size:13px;color:var(--ink-3);display:grid;gap:6px;ju
         <button type="button" data-mode="local" aria-pressed="false"><i></i>woo 的時間</button>
       </div>
     </div>
-    <p class="lede"><span class="you-c">青色</span>是魚的時間（香港），<span class="me-c">橙色</span>是 woo 當地的時間。每天有一張給魚的小紙條，到了那天才拆得開。</p>
+    <p class="lede"><span class="you-c">青色</span>是魚的時間（香港），<span class="me-c">橙色</span>是 woo 當地的時間。<span class="away-only">每天有一張給魚的小紙條，到了那天才拆得開；第一張要等 woo 起飛。</span></p>
     <div id="days"></div>
   </section>
 
@@ -434,6 +500,7 @@ footer{margin-top:34px;font-size:13px;color:var(--ink-3);display:grid;gap:6px;ju
     <p class="lede">九個晚上，五間酒店。</p>
     <div class="list" id="hotelList"></div>
   </section>
+  </div>
 
   <footer>
     <button class="ps" type="button" id="ps">P.S.</button>
@@ -441,7 +508,7 @@ footer{margin-top:34px;font-size:13px;color:var(--ink-3);display:grid;gap:6px;ju
   </footer>
 </div>
 
-<div class="nowbar" aria-live="polite">
+<div class="nowbar away-only" aria-live="polite">
   <div class="nowbar-in">
     <div class="nb-text">
       <div class="nb-label"><i></i><span id="nbLabel">woo 現在</span></div>
@@ -454,6 +521,10 @@ footer{margin-top:34px;font-size:13px;color:var(--ink-3);display:grid;gap:6px;ju
 
 <script>
 const HK = 'Asia/Hong_Kong', AZ = 'America/Phoenix', LA = 'America/Los_Angeles';
+const PREVIEW = location.hash === '#finale-preview';
+const T_Q = (location.search.match(/[?&]t=([^&]+)/) || [])[1];
+const T_FIX = PREVIEW ? Date.parse('2026-10-10T01:00:00Z') : T_Q ? Date.parse(decodeURIComponent(T_Q)) : NaN;
+const NOW = () => isNaN(T_FIX) ? Date.now() : T_FIX;
 
 const FLIGHTS = {
   f1:{code:'CX882', from:{c:'HKG',city:'香港',t:'18:25'}, to:{c:'LAX',city:'洛杉磯',t:'16:30'}, dur:'13 小時 5 分', dep:'2026-09-29T10:25:00Z', arr:'2026-09-29T23:30:00Z', ftz:HK, ttz:LA},
@@ -765,8 +836,12 @@ const SKY = {
   }
   $('#stars').innerHTML = s;
 })();
+const SEA = {
+  night:['#1c2c58','#15224a','#0e1838'], dawn:['#7a86b8','#5d6a9e','#434f80'],
+  day:['#5aa6d4','#3d8bc0','#2a6ea3'], dusk:['#a0708c','#7a5274','#553a5a']
+};
 let skyKind = 'dusk';
-function paintSky(t, tz){
+function paintSky(t, tz, back){
   const p = P(tz, t), x = p.h + p.mi / 60;
   const k = (x < 5 || x >= 20) ? 'night' : x < 7 ? 'dawn' : x < 17.5 ? 'day' : 'dusk';
   skyKind = k;
@@ -783,6 +858,10 @@ function paintSky(t, tz){
   $('#orbC').setAttribute('r', S.moon ? 22 : 30);
   $('#craters').style.display = S.moon ? '' : 'none';
   $('#hfish').querySelectorAll('ellipse:first-of-type, path:first-of-type').forEach(n => n.setAttribute('fill', S.fish));
+  ['mesaFar','mesaNear','ground','cactus'].forEach(id => $('#' + id).style.display = back ? 'none' : '');
+  ['sea','hfish2','hheart'].forEach(id => $('#' + id).style.display = back ? '' : 'none');
+  $('#hfish').setAttribute('transform', back ? 'translate(376,120)' : 'translate(505,112)');
+  if (back) SEA[k].forEach((c, i) => $('#wave' + (i + 1)).setAttribute('fill', c));
 }
 
 /* ---------- moods ---------- */
@@ -806,13 +885,19 @@ function myMood(p, pl){
   return '深夜';
 }
 
-/* ---------- notes (unlock at 00:00 on that date, Hong Kong time) ---------- */
+/* ---------- notes: the first opens when CX882 takes off; the rest at 00:00 on that date, Hong Kong time ---------- */
 let UNLOCK_ALL = location.hash === '#all' || /[?&]all\b/.test(location.search);
 addEventListener('hashchange', () => {
   if (location.hash === '#all' && !UNLOCK_ALL){ UNLOCK_ALL = true; refreshNotes(Date.now()); }
 });
 const opened = new Set(store.get('fish-opened', '').split(',').filter(Boolean));
-function unlockAt(di){ return Date.parse(`${DAYS[di].d}T00:00:00+08:00`); }
+function unlockAt(di){ return di === 0 ? DEP : Date.parse(`${DAYS[di].d}T00:00:00+08:00`); }
+function noteHTML(di, withDate){
+  const day = DAYS[di];
+  return (withDate ? `<span class="when">${day.m}/${day.n} ${day.wd} · ${day.title}</span>` : '') +
+    `<p>${day.note}</p><span class="sig">—— 我在${/^[A-Za-z]/.test(day.sig) ? ' ' + day.sig + ' ' : day.sig}很想你</span>`;
+}
+function markOpened(di){ opened.add(String(di)); store.set('fish-opened', [...opened].join(',')); }
 function refreshNotes(t){
   document.querySelectorAll('.note-btn').forEach(b => {
     const di = +b.dataset.di, open = UNLOCK_ALL || t >= unlockAt(di);
@@ -820,24 +905,45 @@ function refreshNotes(t){
     b.classList.toggle('opened', open && opened.has(String(di)));
     b.classList.toggle('fresh', open && !opened.has(String(di)));
   });
+  document.querySelectorAll('.nt').forEach(b => {
+    const di = b.dataset.di;
+    b.classList.toggle('opened', opened.has(di));
+    b.classList.toggle('fresh', !opened.has(di));
+  });
+  const left = DAYS.filter((_, i) => !opened.has(String(i))).length;
+  $('#lettersHint').textContent = left ? `一共 ${DAYS.length} 張，還有 ${left} 張沒拆過。` : `${DAYS.length} 張都拆過了，想再看就再點開。`;
 }
 document.addEventListener('click', ev => {
   const b = ev.target.closest('.note-btn'); if (!b) return;
   const di = +b.dataset.di, day = DAYS[di], box = $('#note-' + di);
-  if (!(UNLOCK_ALL || Date.now() >= unlockAt(di))){
+  if (!(UNLOCK_ALL || NOW() >= unlockAt(di))){
     b.classList.remove('shake'); void b.offsetWidth; b.classList.add('shake');
     const r = b.getBoundingClientRect();
-    pop(r.left + r.width / 2, r.top, `還沒到時間喔，${day.m}/${day.n} 再來拆`, {quiet:true});
+    pop(r.left + r.width / 2, r.top, di === 0 ? 'woo 起飛了才拆得開喔（18:25）' : `還沒到時間喔，${day.m}/${day.n} 再來拆`, {quiet:true});
     return;
   }
   const show = box.hidden;
-  if (show){
-    box.innerHTML = `<p>${day.note}</p><span class="sig">—— 我在${/^[A-Za-z]/.test(day.sig) ? ' ' + day.sig + ' ' : day.sig}很想你</span>`;
-    box.hidden = false;
-    opened.add(String(di)); store.set('fish-opened', [...opened].join(','));
-  } else box.hidden = true;
+  if (show){ box.innerHTML = noteHTML(di); box.hidden = false; markOpened(di); }
+  else box.hidden = true;
   b.setAttribute('aria-expanded', String(show));
-  refreshNotes(Date.now());
+  if (show) update(); else refreshNotes(NOW());
+});
+
+/* the letters shelf, shown once woo is home */
+const ENV_L = ENV.replace('width="30" height="22"', 'width="38" height="28"');
+$('#envs').innerHTML = DAYS.map((d, di) =>
+  `<button class="nt" type="button" data-di="${di}" aria-pressed="false" aria-controls="letterView" aria-label="${d.m}/${d.n} 的小紙條">${ENV_L}<span class="dt">${d.m}/${d.n}</span></button>`).join('');
+let letterSel = -1;
+$('#envs').addEventListener('click', ev => {
+  const b = ev.target.closest('.nt'); if (!b) return;
+  const di = +b.dataset.di;
+  letterSel = letterSel === di ? -1 : di;
+  if (letterSel >= 0) markOpened(di);
+  document.querySelectorAll('.nt').forEach(n => n.setAttribute('aria-pressed', String(+n.dataset.di === letterSel)));
+  const v = $('#letterView');
+  if (letterSel < 0) v.hidden = true;
+  else { v.hidden = false; v.innerHTML = noteHTML(di, true); v.style.animation = 'none'; void v.offsetWidth; v.style.animation = ''; }
+  refreshNotes(NOW());
 });
 
 /* ---------- pops ---------- */
@@ -917,7 +1023,7 @@ addEventListener('pointercancel', () => { down = null; });
 addEventListener('pointerup', e => {
   if (!down) return; const d = down; down = null;
   if (Math.hypot(e.clientX - d.x, e.clientY - d.y) > 10 || performance.now() - d.t > 600) return;
-  if (e.target.closest('a,button,input,select,textarea,.nowbar,.fl-fish,.note,#orb,#hfish,#title')) return;
+  if (e.target.closest('a,button,input,select,textarea,.nowbar,.fl-fish,.note,#orb,#hfish,#hfish2,#hheart,#title')) return;
   try { if (String(getSelection()).length) return; } catch (_) {}
   missYou(e.clientX, e.clientY);
 });
@@ -936,14 +1042,22 @@ $('#orb').addEventListener('click', ev => {
   pop(ev.clientX, ev.clientY, SKY[skyKind].moon ? '月亮先經過魚那邊，大概十五個小時後，才輪到 woo 這裡。' : '這裡太陽很大，woo 有乖乖擦防曬。', {long:true});
 });
 $('#hfish').addEventListener('click', ev => {
-  pop(ev.clientX, ev.clientY, '沙漠裡本來沒有魚。所以 woo 把魚帶在心上了。', {long:true});
+  pop(ev.clientX, ev.clientY, document.body.classList.contains('is-back') ? '從沙漠游回海裡了。' : '沙漠裡本來沒有魚。所以 woo 把魚帶在心上了。', {long:true});
 });
+$('#hfish2').addEventListener('click', ev => pop(ev.clientX, ev.clientY, '兩條魚，終於在同一片海裡了。', {long:true}));
+$('#hheart').addEventListener('click', ev => pop(ev.clientX, ev.clientY, '這個不用隔著時差了', {rare:true}));
 let titleTaps = [];
 $('#title').addEventListener('click', ev => {
+  if (document.body.classList.contains('is-back')) celebrate();
   const now = Date.now(); titleTaps = titleTaps.filter(x => now - x < 2500); titleTaps.push(now);
   if (titleTaps.length >= 5){ titleTaps = []; school(); pop(ev.clientX, ev.clientY, '魚群出動，替 woo 抱抱魚'); }
 });
 $('#ps').addEventListener('click', () => { const p = $('#psText'); p.hidden = !p.hidden; });
+$('#tripBtn').addEventListener('click', ev => {
+  const open = document.body.classList.toggle('trip-open');
+  ev.currentTarget.setAttribute('aria-expanded', String(open));
+  if (open) $('#trip').scrollIntoView({block:'start', behavior:reduce ? 'auto' : 'smooth'});
+});
 
 /* ---------- floating things ---------- */
 const layer = $('#floaters');
@@ -994,22 +1108,18 @@ if (!reduce){
   }
 }
 
-/* ---------- finale ---------- */
-const PREVIEW = location.hash === '#finale-preview';
-let finaleOn = false;
-function startFinale(){
-  if (finaleOn) return; finaleOn = true;
-  $('#finale').hidden = false; $('#jumpNow').textContent = 'woo 回來了';
+/* ---------- finale: one celebration on arrival, again whenever the title is tapped ---------- */
+let finaleOn = false, confetti = null;
+function makeConfetti(){
   const cv = document.createElement('canvas'); cv.id = 'confetti'; cv.setAttribute('aria-hidden', 'true');
   document.body.appendChild(cv);
   const ctx = cv.getContext('2d');
   const COLORS = ['#f59e5b','#5cc0cf','#f39bb0','#f3c07a','#bf561d','#7cc8d8'];
-  let W = 0, H = 0;
+  let W = 0, H = 0, parts = [], until = 0, running = false;
   const size = () => { const dpr = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
   size(); addEventListener('resize', size);
   const rnd = (a, b) => a + Math.random() * (b - a);
-  const make = init => ({heart:Math.random() < .45, x:rnd(0, W), y:init ? rnd(-H, H) : rnd(-80, -20), vy:rnd(.5, 1.4), ph:rnd(0, 6.28), sw:rnd(.6, 1.6), s:rnd(8, 15), rot:rnd(-.4, .4), c:COLORS[Math.random() * COLORS.length | 0]});
-  const P2 = Array.from({length: W < 500 ? 36 : 56}, () => make(true));
+  const make = y => ({heart:Math.random() < .45, x:rnd(0, W), y, vy:rnd(1.8, 3.4), ph:rnd(0, 6.28), sw:rnd(.6, 1.6), s:rnd(8, 15), rot:rnd(-.4, .4), c:COLORS[Math.random() * COLORS.length | 0]});
   const draw = p => {
     ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.c; ctx.globalAlpha = .85;
     const s = p.s;
@@ -1024,25 +1134,59 @@ function startFinale(){
     }
     ctx.restore();
   };
-  if (reduce){ P2.forEach(draw); return; }
   const loop = tt => {
     ctx.clearRect(0, 0, W, H);
-    for (let i = 0; i < P2.length; i++){
-      const p = P2[i]; p.y += p.vy; p.x += Math.sin(tt * .0012 * p.sw + p.ph) * .5;
-      if (p.y > H + 30) P2[i] = make(false);
-      draw(P2[i]);
-    }
-    requestAnimationFrame(loop);
+    if (tt < until && Math.random() < .5) parts.push(make(-20));
+    parts = parts.filter(p => p.y < H + 30);
+    parts.forEach(p => { p.y += p.vy; p.x += Math.sin(tt * .0012 * p.sw + p.ph) * .5; draw(p); });
+    if (parts.length || tt < until) requestAnimationFrame(loop); else running = false;
   };
-  requestAnimationFrame(loop);
+  return {burst(){
+    const n = W < 500 ? 40 : 64;
+    for (let i = 0; i < n; i++) parts.push(make(rnd(-H * .7, -10)));
+    until = performance.now() + 2600;
+    if (!running){ running = true; requestAnimationFrame(loop); }
+  }};
+}
+function celebrate(){
+  if (reduce) return;
+  (confetti || (confetti = makeConfetti())).burst();
+}
+function startFinale(){
+  if (finaleOn) return; finaleOn = true;
+  celebrate();
 }
 
 /* ---------- live update ---------- */
-let target = null;
+let target = null, firstNoteReady = false;
 function update(){
-  const t = PREVIEW ? Date.parse('2026-10-10T01:00:00Z') : Date.now();
+  const t = NOW();
   const pl = place(t); ST = status(t, pl);
   const hk = P(HK, t), me = P(pl.tz, t);
+  const back = !!pl.back;
+  document.body.classList.toggle('is-back', back);
+
+  paintSky(t, pl.tz, back);
+  $('#cCap').textContent = pl.fly ? '此刻 woo 在雲上面' : pl.tz === HK ? '現在，魚和 woo 在同一片天空下' : '這是 woo 那邊此刻的天空';
+  refreshNotes(t);
+
+  /* home: the page becomes about being back; the itinerary folds away */
+  if (back){
+    $('#title').textContent = 'woo 回來了。';
+    $('#hSub').textContent = '9/29 – 10/10 · 從亞利桑那回到香港';
+    $('#cK').textContent = '回到魚身邊';
+    $('#cV').innerHTML = durBig(t - HOME) + '<small>了</small>';
+    $('#cS').textContent = '10/10 週六 06:15 落地香港';
+    EVENTS.forEach((e, i) => document.getElementById('ev-' + i).classList.remove('now', 'next', 'done'));
+    document.querySelectorAll('.day').forEach(el => el.classList.remove('is-today'));
+    startFinale();
+    return;
+  }
+
+  $('#title').textContent = 'woo 在亞利桑那';
+  $('#hSub').textContent = '9/29 – 10/10 · ICNP 2026';
+  $('#cK').textContent = 'woo 回到魚身邊，還有'; $('#cV').innerHTML = durBig(HOME - t);
+  $('#cS').textContent = t < DEP ? `魚那邊 9/29 週二 18:25 出發，還有 ${durTxt(DEP - t)}` : '魚那邊 10/10 週六 06:15 落地香港';
 
   $('#tYou').textContent = hk.hm; $('#dYou').textContent = `${hk.md} ${hk.wd}`; $('#mYou').textContent = herMood(hk.h);
   $('#wMe').textContent = `woo · ${pl.name}`; $('#tMe').textContent = me.hm; $('#dMe').textContent = `${me.md} ${me.wd}`; $('#mMe').textContent = myMood(me, pl);
@@ -1050,15 +1194,7 @@ function update(){
     : pl.tz === HK ? '<span>時差</span><b>0</b><span>同一邊</span>'
     : '<span>woo 慢</span><b>15</b><span>小時</span>';
 
-  paintSky(t, pl.tz);
-  if (pl.back){ $('#cK').textContent = ''; $('#cV').innerHTML = '在魚身邊了。'; $('#cS').textContent = '謝謝魚一直看著這一頁。'; }
-  else {
-    $('#cK').textContent = 'woo 回到魚身邊，還有'; $('#cV').innerHTML = durBig(HOME - t);
-    $('#cS').textContent = t < DEP ? `魚那邊 9/29 週二 18:25 出發，還有 ${durTxt(DEP - t)}` : '魚那邊 10/10 週六 06:15 落地香港';
-  }
-  $('#cCap').textContent = pl.fly ? '此刻 woo 在雲上面' : pl.tz === HK ? '現在，魚和 woo 在同一片天空下' : '這是 woo 那邊此刻的天空';
-
-  const {cur, active, nxt, last} = ST;
+  const {cur, active, nxt} = ST;
   EVENTS.forEach((e, i) => {
     const el = document.getElementById('ev-' + i);
     const isNow = active && i === cur, isNext = nxt && i === cur + 1;
@@ -1071,18 +1207,26 @@ function update(){
   let key = P(pl.tz, t).iso; if (key === '2026-10-10') key = '2026-10-09';
   document.querySelectorAll('.day').forEach(el => el.classList.toggle('is-today', el.dataset.d === key));
 
+  /* once CX882 is in the air, the nowbar points to the first note until it's opened */
+  firstNoteReady = t >= DEP && t < Date.parse(FLIGHTS.f2.arr) && !opened.has('0');
   $('#nbLabel').textContent = `woo 現在 · 當地 ${me.hm}`;
-  $('#nbTitle').textContent = ST.title; $('#nbSub').textContent = ST.reach;
-  target = ST.kind === 'back' ? null : (active ? EVENTS[cur] : nxt);
+  $('#nbTitle').textContent = ST.title;
+  $('#nbSub').textContent = firstNoteReady ? '起飛了，第一張小紙條拆得開了' : ST.reach;
+  $('#nbGo').textContent = firstNoteReady ? '拆開' : '看看';
+  target = active ? EVENTS[cur] : nxt;
 
   $('#mark').style.setProperty('--f', ((hk.h + hk.mi / 60) / 24).toFixed(4));
-  refreshNotes(t);
-  if (ST.kind === 'back'){ $('#nbGo').textContent = '看看'; startFinale(); }
 }
 function goToTarget(){
-  if (finaleOn){ $('#finale').scrollIntoView({block:'start', behavior:reduce ? 'auto' : 'smooth'}); return; }
+  const smooth = reduce ? 'auto' : 'smooth';
+  if (firstNoteReady){
+    const b = document.querySelector('.note-btn[data-di="0"]');
+    if ($('#note-0').hidden) b.click();
+    document.getElementById('d-' + DAYS[0].d).scrollIntoView({block:'start', behavior:smooth});
+    return;
+  }
   if (!target) return;
-  document.getElementById('ev-' + target.idx).scrollIntoView({block:'center', behavior:reduce ? 'auto' : 'smooth'});
+  document.getElementById('ev-' + target.idx).scrollIntoView({block:'center', behavior:smooth});
 }
 $('#nbGo').addEventListener('click', goToTarget);
 $('#jumpNow').addEventListener('click', ev => { ev.preventDefault(); goToTarget(); });
