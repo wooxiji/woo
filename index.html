@@ -472,7 +472,7 @@ const HOTELS = {
 /* time: local HH:MM · tz: UTC offset (default −7) · dur: hours */
 const DAYS = [
  {d:'2026-09-29', m:9, n:29, wd:'週二', title:'香港 → 洛杉磯 → 鳳凰城', stay:['h1',1],
-  note:'姐姐那邊天黑的時候我起飛，姐姐醒來的時候，我剛好在洛杉磯落地。一整夜都在往東飛，就當是陪姐姐守了一晚。', sig:'香港機場', ev:[
+  note:'姐姐那邊天黑的時候我起飛，姐姐醒來的時候，我剛好在洛杉磯落地。一整夜都在往東飛，就當是陪姐姐守了一晚。good day and night~', sig:'香港機場', ev:[
   {time:'15:25', tz:8, type:'note', label:'去機場', title:'到香港機場值機', text:'提早三個小時到。登機前會跟魚說一聲。', dur:2.9},
   {type:'flight', f:'f1'},
   {time:'16:30', zone:LA, type:'transfer', label:'洛杉磯轉機', city:'洛杉磯', title:'洛杉磯轉機 · 2 小時 30 分', text:'在美國的第一站要入境、提行李、再託運，會有點手忙腳亂，可能回得慢。', reach:'排隊入境中，晚點回魚', dur:2.5},
@@ -481,39 +481,39 @@ const DAYS = [
   {time:'21:45', approx:true, type:'hotel', h:'h1', label:'到酒店', text:'到了第一件事，跟魚報平安。', dur:.75}
  ]},
  {d:'2026-09-30', m:9, n:30, wd:'週三', title:'鳳凰城 → Page', stay:['h2',1],
-  note:'今天去馬蹄灣看日落。我這邊太陽下山的時候，正好是姐姐那邊的早上，所以日落的照片，就當作給姐姐的早安。', sig:'Page', ev:[
+  note:'今天去馬蹄灣看日落。日落的照片，就當作給姐姐的早安。kiss kiss mua~', sig:'Page', ev:[
   {time:'09:00', approx:true, type:'drive', from:'鳳凰城', to:'Page', road:'I-17 N', meta:'約 275 英里 · 四個半小時', text:'一路往北，中午在 Flagstaff 吃飯、加油。', dur:4.5},
   {time:'14:30', approx:true, type:'hotel', h:'h2', label:'到酒店', dur:.75},
   {time:'17:30', approx:true, type:'note', label:'馬蹄灣看日落', title:'馬蹄灣 Horseshoe Bend 看日落', text:'從停車場走一公里多到觀景台。會拍給魚看。', dur:2}
  ]},
  {d:'2026-10-01', m:10, n:1, wd:'週四', title:'上羚羊峽谷 → Sedona', stay:['h3',1],
-  note:'羚羊峽谷裡幾乎沒有訊號。如果我一個多小時沒回，是因為正在很窄、很美的石頭縫裡，想著要拍給姐姐看。', sig:'Page', ev:[
+  note:'羚羊峽谷裡幾乎沒有訊號。如果我一個多小時沒回，是因為正在很窄、很美的石頭縫裡，想著要拍給姐姐看。嘻嘻，沒有訊號，我有腦電波，嗶嗶嗶，發射動感思念光波，biubiubiu~', sig:'Page', ev:[
   {time:'12:00', type:'tour', label:'上羚羊峽谷', dur:1.5},
   {time:'13:45', approx:true, type:'drive', from:'Page', to:'Sedona', road:'US-89 S', meta:'約 140 英里 · 兩個半到三小時', text:'會穿過 Oak Creek Canyon，彎很多，風景很好。', dur:2.75},
   {time:'16:45', approx:true, type:'hotel', h:'h3', label:'到酒店', dur:.75}
  ]},
  {d:'2026-10-02', m:10, n:2, wd:'週五', title:'Sedona 一整天', stay:['h3',2],
-  note:'今天完全不趕。紅色的石頭、很藍的天，就差姐姐陪我慢慢走。', sig:'Sedona', ev:[
+  note:'今天完全不趕。紅色的石頭、很藍的天，想抱抱。', sig:'Sedona', ev:[
   {time:'09:00', approx:true, type:'note', label:'在 Sedona 看紅岩', title:'Sedona 紅岩', text:'Cathedral Rock、Bell Rock、Chapel of the Holy Cross，傍晚去 Airport Mesa 看日落。', dur:10}
  ]},
  {d:'2026-10-03', m:10, n:3, wd:'週六', title:'Sedona → 圖森', stay:['h4',1],
-  note:'圖森的巨人柱仙人掌，長得像在舉手投降。我對姐姐也是。', sig:'圖森', ev:[
+  note:'圖森的巨人柱仙人掌，長得像在舉手投降。我對姐姐也是。不許動，我投降！', sig:'圖森', ev:[
   {time:'10:00', approx:true, type:'drive', from:'Sedona', to:'圖森', road:'I-17 S', meta:'約 230 英里 · 三個半小時', text:'一路往南，越開越熱。', dur:3.5},
   {time:'15:00', approx:true, type:'hotel', h:'h4', label:'到酒店', dur:.75},
   {time:'16:30', approx:true, type:'note', label:'看巨人柱仙人掌', title:'Saguaro 國家公園', text:'看巨人柱仙人掌，順便等日落。', dur:3}
  ]},
  {d:'2026-10-04', m:10, n:4, wd:'週日', title:'圖森 → 坦佩', stay:['h5',1],
-  note:'自駕快結束了，接下來幾天在坦佩開會。再忙，姐姐的訊息我也一定回。', sig:'坦佩', ev:[
+  note:'自駕快結束了，接下來幾天在坦佩開會。開開開，開個雞毛，想抓緊回去找姐姐！', sig:'坦佩', ev:[
   {time:'10:00', approx:true, type:'drive', from:'圖森', to:'坦佩', road:'I-10 W', meta:'約 110 英里 · 1 小時 45 分', text:'一路 I-10，很直，很好開。', dur:1.75},
   {time:'12:30', approx:true, type:'hotel', h:'h5', label:'到酒店（住四晚）', dur:.75}
  ]},
  {d:'2026-10-05', m:10, n:5, wd:'週一', title:'坦佩 · 還車', stay:['h5',2],
-  note:'今天把車還了。這幾天開過很多路，最常想起的還是姐姐。', sig:'坦佩', ev:[
+  note:'今天把車還了。這幾天開過很多路，你知道的我開車的時候除了不開車，什麼都幹，比如發射思念動感光波，boom shakalaka~', sig:'坦佩', ev:[
   {time:'10:00', approx:true, type:'note', label:'自由活動', title:'自由活動 · 去會場認路', text:'會議明天正式開始，先去 ASU 的 Memorial Union 看看。', dur:6},
   {time:'19:00', approx:true, type:'car', mode:'還車', label:'還車', text:'把車開回鳳凰城機場還掉，自駕到這裡結束。', dur:1.5}
  ]},
  {d:'2026-10-06', m:10, n:6, wd:'週二', conf:true, title:'ICNP 第 1 天', stay:['h5',3],
-  note:'開會那三天，最好找我的時候是姐姐睡前那一個小時。那是我這邊開會前的早上，腦袋裡還只有姐姐。', sig:'會場', ev:[
+  note:'開會第一天，我是下午pre。ppt全忘記啦，腦袋裡只有姐姐。', sig:'會場', ev:[
   {time:'08:00', approx:true, type:'conf', label:'開會 · ICNP 第 1 天', cday:'第 1 天', end:'17:30', rows:[
    ['上午','Keynote · George Varghese（UCLA）',1],
    ['','Security and Traffic Analysis'],
@@ -522,7 +522,7 @@ const DAYS = [
    ['','Programmable Switches and In-Network Computing']]}
  ]},
  {d:'2026-10-07', m:10, n:7, wd:'週三', conf:true, title:'ICNP 第 2 天 · 晚宴', stay:['h5',4],
-  note:'今晚有會議晚宴，那時候姐姐那邊是隔天早上。吃完飯，剛好跟姐姐說早安。', sig:'坦佩', ev:[
+  note:'今晚有會議晚宴。吃完飯，剛好跟姐姐說早安。古德貓寧，miao~', sig:'坦佩', ev:[
   {time:'08:00', approx:true, type:'conf', label:'開會 · ICNP 第 2 天', cday:'第 2 天', end:'17:30', rows:[
    ['','AI Cluster Networking and Scheduling'],
    ['','Data Center Traffic and Performance'],
@@ -531,7 +531,7 @@ const DAYS = [
   {time:'18:30', approx:true, type:'note', label:'會議晚宴', title:'會議晚宴 · Caffe Boa', text:'在坦佩的 Mill Ave 上。', dur:2.5}
  ]},
  {d:'2026-10-08', m:10, n:8, wd:'週四', conf:true, title:'ICNP 最後一天 → 三藩市', stay:null, stayText:'今晚在飛機上',
-  note:'最後一天。散會就去機場，接下來的每一段路，都是往姐姐那邊。', sig:'鳳凰城機場', ev:[
+  note:'最後一天。散會就去機場，接下來的每一段路，都是往姐姐靠攏，耶耶耶。', sig:'鳳凰城機場', ev:[
   {time:'07:30', approx:true, type:'note', label:'退房', title:'退房，行李先寄放', text:'散會後回來拿。', dur:.5},
   {time:'08:00', approx:true, type:'conf', label:'開會 · ICNP 第 3 天', cday:'第 3 天', end:'17:30', rows:[
    ['','Video Streaming and Multipath Services'],
@@ -542,7 +542,7 @@ const DAYS = [
   {time:'22:37', zone:LA, type:'transfer', label:'三藩市轉機', city:'三藩市', title:'三藩市轉機 · 只有 1 小時 43 分', text:'一落地就要趕去國際航站樓，會走得很快。上機前跟魚說。', reach:'在趕飛機，上機前跟魚說', dur:1.7}
  ]},
  {d:'2026-10-09', m:10, n:9, wd:'週五', title:'三藩市 → 香港', sub:'魚那邊 10/10 早上到', stay:null,
-  note:'十五個小時的時差，這次我自己一點一點飛回來。姐姐睡一覺，我就到了。', sig:'回家的路上', ev:[
+  note:'回家！等我！love you, miss you, ** you 3000 time~', sig:'回家的路上', ev:[
   {type:'flight', f:'f4'},
   {d:'2026-10-10', time:'06:15', tz:8, type:'note', label:'回到香港', title:'10/10 週六 · 回到香港', text:'woo 回來了。'}
  ]}
